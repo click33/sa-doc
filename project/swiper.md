@@ -35,7 +35,7 @@
 ### 3、修改
 - 接口
 ``` api
-	/SysSwiper/delete
+	/SysSwiper/update
 ```
 - 参数
 ``` p
