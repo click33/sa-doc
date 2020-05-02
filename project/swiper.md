@@ -9,8 +9,8 @@
 ```
 - 参数
 ``` p
-	{String}	title=""			标题 
-	{String}	img_src=""			图片地址 
+	{String}	title = ""			标题
+	{String}	img_src = ""			图片地址 
 	{String}	link=""				链接 
 	{int}		status=1			状态（1=正常，2=禁用） 
 	{long}		sort=1				排序值 

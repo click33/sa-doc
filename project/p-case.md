@@ -4,32 +4,32 @@
 
 ---
 
-- 写一个接口
+### 写一个接口
 ``` api
 	/SysSwiper/add
 ```
-- 参数 - 最简单写法
+### 参数 - 最简单写法
 ``` p
 	username			账号名称 
 	password			账号密码 
 	way					登录方式(1=账号登录，2=id登录，3=手机号登录)
 ```
 
-- 参数 - 带默认值 
+### 参数 - 带默认值 
 ``` p
 	username = admin			账号名称 
 	password = admin			账号密码 
 	way = 1						登录方式 (1=账号登录，2=id登录，3=手机号登录)
 ```
 
-- 参数 - 带数据类型 
+### 参数 - 带数据类型 
 ``` p
 	{String}	username = admin			账号名称 
 	{String}	password = admin			账号密码 
-	{String}	way = 1						登录方式 (1=账号登录，2=id登录，3=手机号登录)
+	{String}	way = 1						登录方式	(1=账号登录，2=id登录，3=手机号登录)
 ```
 
-- 返回示例
+### 返回示例
 ``` js
 	{
 		"code": 200,        // 状态码
@@ -39,5 +39,5 @@
 	}
 ```
 
-- 导入一段代码
+### 导入一段代码
 @import(res)
