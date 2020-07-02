@@ -9,6 +9,9 @@
 		<link rel="stylesheet" href="https://unpkg.com/docsify@4.11.3/lib/themes/vue.css">
 		<link rel="stylesheet" href="./sa-lib/index.css">
 		<script src="./sa-lib/index.js"></script> 
+		<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
+		<script src="https://www.layuicdn.com/layer-v3.1.1/layer.js"></script>
+		<script src="./sa-lib/api-test/sa.js"></script>
 	</head>
 	<body>
 		<nav>
@@ -20,7 +23,15 @@
 			<div id="app">加载中...</div>
 		</div>
 		<script>
-			// 1.2版本，更新于2020-5-2 
+			
+			// ========================= v1.3.0 版本，更新于2020-7-2 新增接口文档测试  =========================
+			
+			// 全局配置 
+			window.sa_doc_cfg = {
+				server_url: 'http://127.0.0.1:8080',	// 接口测试总地址 
+			}
+			
+			// 文档标题
 			var name = '<img style="width: 50px; height: 50px; vertical-align: middle;" src="sa-lib/logo.png" alt="logo" /> ';
 			name += '<b style="font-size: 24px; vertical-align: middle;">sa-doc 接口文档</b>'
 			// 一些配置 
