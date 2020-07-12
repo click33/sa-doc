@@ -16,13 +16,9 @@
 - github地址：[https://github.com/click33/sa-doc](https://github.com/click33/sa-doc)
 
 
-## sa系列其他工具
+## 需求提交
+- 我们深知一个优秀的项目需要海纳百川，[点我在线提交需求](http://sa-app.dev33.cn/wall.html?name=sa-doc)
 
-- **sa-token：**[一个的JavaWeb权限认证框架，强大、简单、好用](http://sa-token.dev33.cn/)
-- **sa-admin：**[一个多窗口后台模板，流畅、易上手、提高生产力](http://sa-admin.dev33.cn/)
-- **sa-fast：**[一个基于springboot架构的快速开发平台，内置代码生成器](http://sa-fast.dev33.cn/)
-- **sa-vue-admin：**[对sa-admin的vue单页版实现, 基于vue-cli、element-ui的单页后台模板](http://sa-vue-admin.dev33.cn/)
-- **SqlFly：**[一个好用的ORM框架](https://sqlfly.dev33.cn/)
 
 ## 贡献代码
 1. 在github上fork一份到自己的仓库
@@ -31,10 +27,20 @@
 4. 提交pr（点击：New Pull Request）（提交pr前请保证自己fork的仓库是最新版本，如若不是先强制更新一下）
 5. 等待合并
 
+
 ## 建议贡献的地方
 - 修复源码现有bug，或增加新的实用功能
 - 完善在线文档，或者修复现有错误之处
 - 如果更新实用功能，可在文档友情链接处留下自己的推广链接
+
+
+## sa系列其他工具
+- **sa-token：**[一个的JavaWeb权限认证框架，强大、简单、好用](http://sa-token.dev33.cn/)
+- **sa-admin：**[一个多窗口后台模板，流畅、易上手、提高生产力](http://sa-admin.dev33.cn/)
+- **sa-fast：**[一个基于springboot架构的快速开发平台，内置代码生成器](http://sa-fast.dev33.cn/)
+- **sa-vue-admin：**[对sa-admin的vue单页版实现, 基于vue-cli、element-ui的单页后台模板](http://sa-vue-admin.dev33.cn/)
+- **SqlFly：**[一个好用的ORM框架](https://sqlfly.dev33.cn/)
+
 
 ## 交流群
 QQ交流群：[782974737 点击加入](https://jq.qq.com/?_wv=1027&k=5DHN5Ib)
