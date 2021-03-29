@@ -12,7 +12,7 @@
 
 ## 获取最新代码
 - 你可以从gitee，或者github上获取最新代码 
-- gitee地址：[https://gitee.com/sz6/sa-doc](https://gitee.com/sz6/sa-doc)
+- gitee地址：[https://gitee.com/click33/sa-doc](https://gitee.com/click33/sa-doc)
 - github地址：[https://github.com/click33/sa-doc](https://github.com/click33/sa-doc)
 
 
