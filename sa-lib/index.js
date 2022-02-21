@@ -30,92 +30,108 @@ var sa_plugins = function(hook) {
 	});
 	
 	
-	function f5_test_btn() {
-		// console.log(123);
-		$('.anchor').each(function(index, el) {
-			try{
-				// 获取父元素
-				var parTag = $(this).parent('h3');
-				if(parTag == null) {
-					return;
-				}
-				var tagName = parTag.prop("tagName");
-				if(tagName != 'H3') {
-					return;
-				}
-				// 地址、参数等信息 
-				var cc_id = sa.randomString(16);	// id号码 
-				window.apiInfoMap = window.apiInfoMap || {};	// 存储当前页面所有api信息 
-				window.apiInfoMap[cc_id] = {	// 此项的所有信息 
-					// api_title: parTag.find('a span').text(),	// 接口标题 
-					ajaxUrl: '',	// 接口地址 
-					ajaxType: 'GET',	// 接口请求方式 
-					headerList: [],	// 请求头参数  
-					bodyList: [],	// 请求体参数 
-				};	
-				var apiInfo = window.apiInfoMap[cc_id];
-				var nextTagArr = $(parTag).nextAll();	
-				for (var i = 0; i < nextTagArr.length; i++) {
-					var tag = $(nextTagArr.get(i));
-					// 如果已经到了H3了，则可以结束了 
-					if(tag.prop("tagName") == 'H3') {
-						break;
-					}
-					// 如果是参数 
-					if(tag.prop("tagName") == 'TABLE') {
-						var trArr = $(tag).find('tbody tr');
-						for (var j = 0; j < trArr.length; j++) {
-							var tdArr = $(trArr.get(j)).find('td');
-							apiInfo.bodyList.push({name: tdArr.get(0).innerHTML, value: '', tips: tdArr.get(3).innerHTML});	// , value: tdArr.get(3)
-						}
-					}
-					// 如果是参数
-					// if(tag.prop("tagName") == 'DIV' && tag.prop('class') == 'body-p-list') {
-					// 	var text = tag.text();
-					// 	var trArr = JSON.parse(text);
-					// 	console.log(trArr.length);
-					// 	for (var j = 0; j < trArr.length; j++) {
-					// 		var tdArr = trArr[j];
-					// 		apiInfo.bodyList.push({name: tdArr[0], value: '', tips: tdArr[3]});	// , value: tdArr[2]
-					// 	}
-					// }
-					// 如果是地址 
-					if(tag.prop("tagName") == 'UL') {
-						// 如果能搜索到 data-lang="api"
-						var tg = $(tag).find('[class=lang-api]');
-						if(tg.length > 0) {
-							var url_i = tg.get(0).innerHTML;
-							if(url_i.indexOf('http') != 0) {
-								url_i = sa_doc_cfg.server_url + url_i;;
-							}
-							apiInfo.ajaxUrl = url_i;
-						}
-					}
-				}
-				// console.log(nextAll.length);
-				
-				// console.log(tagName);
-				// 后面添加一个按钮
-				// parTag.after('<button>测试接口</button>');
-				// console.log(parTag.find('a span').text());
-				var button = '<button class="test-api-btn" type="button" '+
-					' cc-id="' + cc_id + '" ' + 
-					' api-title="' + parTag.find('a span').text() + '" ' + 
-					' onclick="test_api(this)">接口测试</button>';
-				parTag.append(button);
-			}catch(e){
-				console.err(e);
-			}
-		})
-	}
-	
 	// 渲染完全完成之后
 	hook.doneEach(function() {
 		f5_test_btn();
+		
+		// 给代码盒子，添加行数样式 
+		$('pre code').each(function(){
+			var lines = $(this).text().split('\n').length;
+			var $numbering = $('<ul/>').addClass('code-line-box');
+			$(this)
+				.addClass('has-numbering')
+				.parent()
+				.append($numbering);
+			for(i=1;i<=lines;i++){
+				$numbering.append($('<li/>').text(i));
+			}
+		});
+		
 	});
 	
 };
 
+
+
+// 刷新测试按钮 
+function f5_test_btn() {
+	// console.log(123);
+	$('.anchor').each(function(index, el) {
+		try{
+			// 获取父元素
+			var parTag = $(this).parent('h3');
+			if(parTag == null) {
+				return;
+			}
+			var tagName = parTag.prop("tagName");
+			if(tagName != 'H3') {
+				return;
+			}
+			// 地址、参数等信息 
+			var cc_id = sa.randomString(16);	// id号码 
+			window.apiInfoMap = window.apiInfoMap || {};	// 存储当前页面所有api信息 
+			window.apiInfoMap[cc_id] = {	// 此项的所有信息 
+				// api_title: parTag.find('a span').text(),	// 接口标题 
+				ajaxUrl: '',	// 接口地址 
+				ajaxType: 'GET',	// 接口请求方式 
+				headerList: [],	// 请求头参数  
+				bodyList: [],	// 请求体参数 
+			};	
+			var apiInfo = window.apiInfoMap[cc_id];
+			var nextTagArr = $(parTag).nextAll();	
+			for (var i = 0; i < nextTagArr.length; i++) {
+				var tag = $(nextTagArr.get(i));
+				// 如果已经到了H3了，则可以结束了 
+				if(tag.prop("tagName") == 'H3') {
+					break;
+				}
+				// 如果是参数 
+				if(tag.prop("tagName") == 'TABLE') {
+					var trArr = $(tag).find('tbody tr');
+					for (var j = 0; j < trArr.length; j++) {
+						var tdArr = $(trArr.get(j)).find('td');
+						apiInfo.bodyList.push({name: tdArr.get(0).innerHTML, value: '', tips: tdArr.get(3).innerHTML});	// , value: tdArr.get(3)
+					}
+				}
+				// 如果是参数
+				// if(tag.prop("tagName") == 'DIV' && tag.prop('class') == 'body-p-list') {
+				// 	var text = tag.text();
+				// 	var trArr = JSON.parse(text);
+				// 	console.log(trArr.length);
+				// 	for (var j = 0; j < trArr.length; j++) {
+				// 		var tdArr = trArr[j];
+				// 		apiInfo.bodyList.push({name: tdArr[0], value: '', tips: tdArr[3]});	// , value: tdArr[2]
+				// 	}
+				// }
+				// 如果是地址 
+				if(tag.prop("tagName") == 'UL') {
+					// 如果能搜索到 data-lang="api"
+					var tg = $(tag).find('[class=lang-api]');
+					if(tg.length > 0) {
+						var url_i = tg.get(0).innerHTML;
+						if(url_i.indexOf('http') != 0) {
+							url_i = sa_doc_cfg.server_url + url_i;;
+						}
+						apiInfo.ajaxUrl = url_i;
+					}
+				}
+			}
+			// console.log(nextAll.length);
+			
+			// console.log(tagName);
+			// 后面添加一个按钮
+			// parTag.after('<button>测试接口</button>');
+			// console.log(parTag.find('a span').text());
+			var button = '<button class="test-api-btn" type="button" '+
+				' cc-id="' + cc_id + '" ' + 
+				' api-title="' + parTag.find('a span').text() + '" ' + 
+				' onclick="test_api(this)">接口测试</button>';
+			parTag.append(button);
+		}catch(e){
+			console.err(e);
+		}
+	})
+}
 
 // 点击测试接口的按钮
 function test_api(event) {
@@ -143,8 +159,6 @@ function test_api(event) {
 	
 	sa.showIframe3(title, './sa-lib/api-test/index.html?id=' + id, '1000px', '90%');
 }
-
-
 
 // 移除数组中所有空白字符串 
 function arrayTrimSpace(array) {
