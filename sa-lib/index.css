@@ -81,9 +81,9 @@
 
 /* js语言样式优化 */
 .main-box .lang-js{color: #01a252 !important;}
-.lang-js .token.comment{color: #CDAB53;}
+.lang-js .token.comment{color: #ddd;}
 /* .lang-js .token.string{color: #fded02;} */
-.lang-js .token.string{color: #eee;}
+.lang-js .token.string{color: #75C052;}
 .lang-js .token.punctuation{color: #eee;}
 
 /* .gt-container{padding: 1.5em; padding-bottom: 100px;} */
